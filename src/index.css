@@ -1,0 +1,68 @@
+:root {
+  /* -- palette -------------------------------------------------- */
+  --deep: #0f2e2b;         /* river-at-dusk background */
+  --deep-2: #133632;       /* slightly lifted panel on deep */
+  --paper: #ece2c6;        /* aged manila tag */
+  --paper-2: #e2d5ae;      /* shadowed paper */
+  --ink: #1f2a22;          /* stamped ink / body text on paper */
+  --ink-soft: #4a5a4e;     /* secondary ink */
+  --brass: #c1903f;        /* grommet / hardware / focus */
+  --brass-dim: #8c6b34;
+  --rust: #a8462d;         /* record stamp / accent / danger */
+  --line-on-deep: rgba(236, 226, 194, 0.16);
+  --line-on-paper: rgba(31, 42, 34, 0.14);
+
+  /* -- type -------------------------------------------------------*/
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", monospace;
+
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 900px 500px at 50% -10%, #1a453f 0%, transparent 60%),
+    var(--deep);
+  color: var(--paper);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.45;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

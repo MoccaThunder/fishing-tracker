@@ -1,0 +1,35 @@
+.conditions {
+  border: 1px solid rgba(31, 42, 34, 0.16);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.28);
+  padding: 0.6rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.conditions__row {
+  display: flex;
+  align-items: center;
+}
+
+.conditions__moon {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+
+.conditions__weather {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+.conditions__weather--loading {
+  font-style: italic;
+}
+
+.conditions__hint {
+  margin: 0;
+  font-size: 0.74rem;
+  color: rgba(31, 42, 34, 0.4);
+}

@@ -1,0 +1,208 @@
+.trends {
+  width: 100%;
+  border: 1px solid var(--line-on-deep);
+  border-radius: 8px;
+  background: var(--deep-2);
+  padding: 0.75rem 0.85rem;
+  color: var(--paper);
+}
+
+.trends__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  user-select: none;
+  color: inherit;
+}
+
+.trends__icon {
+  color: var(--brass-dim);
+  flex-shrink: 0;
+}
+
+.trends__title {
+  flex: 1;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(236, 226, 194, 0.75);
+}
+
+.trends__chevron {
+  color: rgba(236, 226, 194, 0.4);
+  transition: transform 150ms ease;
+  flex-shrink: 0;
+}
+
+.trends__chevron--open {
+  transform: rotate(180deg);
+}
+
+.trends__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line-on-deep);
+}
+
+.trends__empty {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: rgba(236, 226, 194, 0.55);
+}
+
+/* -- overview tiles ------------------------------------------------ */
+
+.trends__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+.trends__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  border: 1px solid var(--line-on-deep);
+  border-radius: 6px;
+  padding: 0.6rem 0.5rem;
+  text-align: center;
+}
+
+.trends__statValue {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  color: var(--brass);
+  line-height: 1.1;
+}
+
+.trends__statLabel {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.03em;
+  color: rgba(236, 226, 194, 0.55);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* -- shared section heading ----------------------------------------- */
+
+.trends__sectionTitle {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(236, 226, 194, 0.5);
+  margin: 0 0 0.55rem;
+}
+
+/* -- species leaderboard --------------------------------------------- */
+
+.trends__bars {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.trends__barRow {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.trends__barLabel {
+  flex: 0 0 32%;
+  font-size: 0.78rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trends__barTrack {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(236, 226, 194, 0.1);
+  overflow: hidden;
+}
+
+.trends__barFill {
+  height: 100%;
+  min-width: 3px;
+  border-radius: 999px;
+  background: var(--brass);
+}
+
+.trends__barCount {
+  flex: 0 0 auto;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: rgba(236, 226, 194, 0.55);
+  min-width: 1.2em;
+  text-align: right;
+}
+
+/* -- monthly activity chart ------------------------------------------ */
+
+.trends__chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  height: 84px;
+}
+
+.trends__chartCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  height: 100%;
+}
+
+.trends__chartBarTrack {
+  flex: 1;
+  width: 100%;
+  max-width: 22px;
+  display: flex;
+  align-items: flex-end;
+  border-radius: 3px;
+  background: rgba(236, 226, 194, 0.08);
+  overflow: hidden;
+}
+
+.trends__chartBar {
+  width: 100%;
+  min-height: 2px;
+  background: var(--brass-dim);
+  border-radius: 3px 3px 0 0;
+}
+
+.trends__chartCount {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: rgba(236, 226, 194, 0.5);
+  height: 0.9em;
+}
+
+.trends__chartLabel {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.02em;
+  color: rgba(236, 226, 194, 0.4);
+}

@@ -1,0 +1,80 @@
+.locate {
+  border: 1px solid rgba(31, 42, 34, 0.16);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.28);
+  padding: 0.6rem 0.75rem;
+}
+
+.locate__row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.locate__pin {
+  color: var(--brass-dim);
+  flex-shrink: 0;
+}
+
+.locate__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.locate__coords {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+
+.locate__accuracy {
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+}
+
+.locate__water {
+  font-size: 0.8rem;
+  color: var(--brass-dim);
+  font-weight: 500;
+}
+
+.locate__water--loading {
+  color: var(--ink-soft);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.locate__waterDistance {
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+.locate__status {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.locate__status--warn {
+  color: var(--rust);
+}
+
+.locate__link {
+  border: none;
+  background: none;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--brass-dim);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.locate__link:hover {
+  color: var(--rust);
+}
