@@ -103,3 +103,19 @@
   border-radius: 50%;
   border: 2.5px solid rgba(236, 226, 194, 0.85);
 }
+
+.capture__loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(236, 226, 194, 0.6);
+  font-size: 0.85rem;
+  background: rgba(10, 31, 28, 0.4);
+}
+
+.btn--shutter:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

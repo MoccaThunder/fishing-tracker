@@ -14,31 +14,50 @@ export default function CameraCapture({ photo, onCapture, onClear }) {
   const streamRef = useRef(null);
   const [cameraOn, setCameraOn] = useState(false);
   const [cameraError, setCameraError] = useState(null);
+  const [videoReady, setVideoReady] = useState(false);
 
   const stopStream = useCallback(() => {
     streamRef.current?.getTracks().forEach((track) => track.stop());
     streamRef.current = null;
     setCameraOn(false);
+    setVideoReady(false);
   }, []);
 
   useEffect(() => stopStream, [stopStream]);
 
+  // Attaches the stream to the <video> element once it's actually mounted.
+  // The element only mounts after cameraOn becomes true, so this has to
+  // happen in an effect that runs after that render — not inline inside
+  // startCamera(), where the element doesn't exist yet.
+  useEffect(() => {
+    if (!cameraOn || !streamRef.current || !videoRef.current) return;
+    const video = videoRef.current;
+    video.srcObject = streamRef.current;
+    video.muted = true; // some mobile browsers only honor the JS property, not the HTML attribute
+    const handleReady = () => setVideoReady(true);
+    video.addEventListener("loadedmetadata", handleReady);
+    video.play().catch(() => {
+      // some browsers resolve/reject play() before the stream is actually
+      // ready — loadedmetadata above is the real signal frames are flowing
+    });
+    return () => {
+      video.removeEventListener("loadedmetadata", handleReady);
+    };
+  }, [cameraOn]);
+
   async function startCamera() {
     setCameraError(null);
+    setVideoReady(false);
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: { facingMode: { ideal: "environment" } },
         audio: false,
       });
       streamRef.current = stream;
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
-        await videoRef.current.play();
-      }
-      setCameraOn(true);
+      setCameraOn(true); // mounts <video>; the effect above wires up the stream
     } catch (err) {
       setCameraError(
-        "Couldn't reach the camera — use \u201cUpload a photo\u201d instead."
+        "Couldn't reach the camera — use “Upload a photo” instead."
       );
     }
   }
@@ -69,7 +88,10 @@ export default function CameraCapture({ photo, onCapture, onClear }) {
         {photo ? (
           <img className="capture__photo" src={photo} alt="Staged catch" />
         ) : cameraOn ? (
-          <video ref={videoRef} className="capture__video" playsInline muted />
+          <>
+            <video ref={videoRef} className="capture__video" autoPlay playsInline muted />
+            {!videoReady && <div className="capture__loading">Starting camera…</div>}
+          </>
         ) : (
           <div className="capture__empty">
             <svg viewBox="0 0 48 48" width="34" height="34" aria-hidden="true">
@@ -99,7 +121,13 @@ export default function CameraCapture({ photo, onCapture, onClear }) {
             Retake
           </button>
         ) : cameraOn ? (
-          <button type="button" className="btn btn--shutter" onClick={takeSnapshot} aria-label="Take photo">
+          <button
+            type="button"
+            className="btn btn--shutter"
+            onClick={takeSnapshot}
+            aria-label="Take photo"
+            disabled={!videoReady}
+          >
             <span className="btn__shutter-ring" />
           </button>
         ) : (
