@@ -84,6 +84,8 @@
   border: 1px solid var(--line-on-deep);
   border-radius: 8px;
   padding: 0.5rem;
+  flex-wrap: wrap;
+  position: relative;
 }
 
 .stagedList__thumb {
@@ -164,4 +166,32 @@
 .stagedList__conditions {
   font-size: 0.76rem;
   color: rgba(236, 226, 194, 0.45);
+}
+
+.stagedList__rowActions {
+  display: flex;
+  gap: 0.4rem;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.stagedList__iconBtn {
+  border: 1px solid var(--line-on-deep);
+  background: transparent;
+  color: rgba(236, 226, 194, 0.6);
+  border-radius: 6px;
+  padding: 0.4rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.stagedList__iconBtn:hover {
+  color: var(--paper);
+  border-color: rgba(236, 226, 194, 0.4);
+}
+
+.stagedList__iconBtn--danger:hover {
+  color: var(--rust);
+  border-color: var(--rust);
 }
